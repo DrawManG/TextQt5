@@ -6,8 +6,12 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+import sqlite3
+import sys
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
+from PyQt5.QtSql import QSqlQueryModel, QSqlDatabase
+from PyQt5.QtWidgets import QApplication, QTableView
 
 
 class Ui_MainWindow(object):
@@ -73,12 +77,32 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Вьювка"))
 
         self.pushButton.clicked.connect(self.pushbutton228)
+        self.pushButton_2.clicked.connect(self.areabd)
     def pushbutton228(self, MainWindow):
         a = self.textEdit.toPlainText()
         b = self.textEdit.toPlainText()
         print(a)
         print(b)
         self.label_2.setText(str(int(a) * int(b)))
+    def areabd(self, MainWindow):
+
+
+
+
+
+         db = QSqlDatabase.addDatabase("QSQLITE")
+         db.setDatabaseName("C:/Users/FAST/Desktop/testqt5/2.db")
+         db.open()
+
+         projectModel = QSqlQueryModel()
+         projectModel.setQuery("select * from RCBase", db)
+
+
+         self.tableWidget.setModel(projectModel)
+
+         self.tableWidget.show()
+
+
 
 
 
