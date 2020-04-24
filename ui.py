@@ -72,5 +72,15 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Загрузка"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Вьювка"))
 
+        self.pushButton.clicked.connect(self.pushbutton228)
+    def pushbutton228(self, MainWindow):
+        a = self.textEdit.toPlainText()
+        b = self.textEdit.toPlainText()
+        print(a)
+        print(b)
+        self.label_2.setText(str(int(a) * int(b)))
+
+
+
 
 
